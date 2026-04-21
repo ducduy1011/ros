@@ -1,50 +1,18 @@
-# my_robot_description
+# Hướng dẫn mở và chạy bài my_robot_description
 
-Goi ROS 2 mo ta robot banh mecanum 4 banh, kem mo phong Gazebo, hien thi RViz va node dieu khien bang ban phim.
+Em là sinh viên thực hiện bài này. File này chỉ ghi cách mở và chạy để thầy xem nhanh, không trình bày lý thuyết.
 
-## 1. Tong quan
+## 1. Thông tin nhanh
 
-Project hien tai da co:
+- Tên package: my_robot_description
+- Workspace em dùng: ~/ros2_ws
+- Mô hình chính: urdf/Assem1_4.urdf
+- Launch để chạy mô phỏng: launch/sim.launch.py
+- Launch để xem model nhanh trên RViz: launch/display.launch.py
 
-- Mo hinh robot URDF xuat tu SolidWorks: `urdf/Assem1_4.urdf`.
-- Mesh 3D cho than, banh, lidar, imu va cac chi tiet co khi.
-- Mo phong Gazebo voi:
-  - Plugin cmd_vel/odom (planar move).
-  - Cam bien IMU topic `/imu/data`.
-  - Cam bien lidar topic `/scan`.
-- RViz config san: `rviz/sim.rviz`.
-- Script teleop ban phim cho mecanum: `scripts/teleop_mecanum_keyboard.py`.
-- Script chuyen `cmd_vel` sang toc do tung banh: `scripts/mecanum_cmdvel_to_wheels.py`.
-- File controller YAML cho wheel velocity controller.
+## 2. Mở workspace và build
 
-## 2. Cau truc chinh
-
-- `launch/display.launch.py`: Mo URDF + joint_state_publisher_gui + RViz.
-- `launch/sim.launch.py`: Chay Gazebo, spawn robot, robot_state_publisher, RViz.
-- `config/controllers.yaml`: Khai bao `joint_state_broadcaster` va `wheel_velocity_controller`.
-- `worlds/simple_obstacles.world`: Ban do vat can don gian (dang co san de mo rong).
-
-## 3. Yeu cau moi truong
-
-- Ubuntu + ROS 2 (khuyen nghi Humble).
-- Cac goi can thiet:
-  - `robot_state_publisher`
-  - `joint_state_publisher`
-  - `joint_state_publisher_gui`
-  - `rviz2`
-  - `gazebo_ros`
-  - `tf2`
-  - `controller_manager`
-  - `ros2_control`
-  - `ros2_controllers`
-  - `gazebo_ros2_control`
-  - `turtlebot3_gazebo` (vi file `sim.launch.py` dang su dung world cua turtlebot3)
-
-Neu thieu package, cai bang apt theo ban phan phoi ROS 2 dang dung.
-
-## 4. Build package
-
-Chay tu workspace ROS 2 (vi du: `~/ros2_ws`):
+Mở terminal, chạy đúng thứ tự:
 
 ```bash
 cd ~/ros2_ws
@@ -52,33 +20,39 @@ colcon build --packages-select my_robot_description
 source install/setup.bash
 ```
 
-## 5. Cach chay nhanh de demo
-
-### 5.1. Xem robot trong RViz (khong Gazebo)
+Nếu đã build trước đó thì vẫn nên source lại:
 
 ```bash
-ros2 launch my_robot_description display.launch.py
+source ~/ros2_ws/install/setup.bash
 ```
 
-### 5.2. Chay mo phong Gazebo + RViz
+## 3. Cách chạy để xem bài (khuyên dùng)
+
+### Bước 1: Mở mô phỏng Gazebo + RViz
+
+Terminal 1:
 
 ```bash
+cd ~/ros2_ws
+source install/setup.bash
 ros2 launch my_robot_description sim.launch.py
 ```
 
-Sau khi mo phong chay, robot se duoc spawn voi ten `my_robot`.
+Sau khi chạy lệnh trên, robot sẽ xuất hiện trong Gazebo (entity: my_robot) và RViz cũng mở sẵn cấu hình.
 
-### 5.3. Dieu khien robot bang ban phim
+### Bước 2: Điều khiển robot bằng bàn phím
 
-Mo terminal moi (da source workspace), chay:
+Mở Terminal 2:
 
 ```bash
+cd ~/ros2_ws
+source install/setup.bash
 ros2 run my_robot_description teleop_mecanum_keyboard.py
 ```
 
-## 6. Bang phim dieu khien
+## 4. Phím điều khiển
 
-Layout phim:
+Các phím di chuyển:
 
 ```text
 q    w    e
@@ -86,63 +60,71 @@ a    s    d
 z    x    c
 ```
 
-- Tinh tien:
-  - `w`: di thang
-  - `x`: di lui
-  - `a`: sang trai
-  - `d`: sang phai
-  - `q/e/z/c`: di cheo
-- Quay tai cho:
-  - `j`: quay trai
-  - `l`: quay phai
-- Toc do:
-  - `u/o`: tang giam toc do tuyen tinh
-  - `i/k`: tang giam toc do quay
-- Dung:
-  - `s` hoac `space`
+- w: đi thẳng
+- x: đi lùi
+- a: sang trái
+- d: sang phải
+- q, e, z, c: đi chéo
+- j: quay trái tại chỗ
+- l: quay phải tại chỗ
+- s hoặc space: dừng
 
-## 7. Topic quan trong de minh hoa cho giao vien
+Chỉnh tốc độ:
 
-- Lenh dieu khien:
-  - `/cmd_vel` (`geometry_msgs/Twist`)
-- Odometry:
-  - `/odom`
-- IMU:
-  - `/imu/data`
-- Lidar:
-  - `/scan`
+- u/o: tăng hoặc giảm tốc độ tịnh tiến
+- i/k: tăng hoặc giảm tốc độ quay
 
-Kiem tra nhanh:
+## 5. Cách kiểm tra nhanh bài đang chạy đúng
+
+Mở Terminal 3 (tuỳ chọn), chạy:
 
 ```bash
+cd ~/ros2_ws
+source install/setup.bash
 ros2 topic list
-ros2 topic echo /odom
+```
+
+Nếu chạy đúng sẽ thấy các topic chính như:
+
+- /cmd_vel
+- /odom
+- /imu/data
+- /scan
+
+Có thể kiểm tra dữ liệu cảm biến:
+
+```bash
 ros2 topic echo /imu/data
 ros2 topic echo /scan
 ```
 
-## 8. Ve controllers va script chuyen cmd_vel -> wheel
+## 6. Trường hợp muốn mở model nhanh, không chạy Gazebo
 
-Project da co:
+Terminal:
 
-- `config/controllers.yaml`
-- `scripts/mecanum_cmdvel_to_wheels.py`
+```bash
+cd ~/ros2_ws
+source install/setup.bash
+ros2 launch my_robot_description display.launch.py
+```
 
-Script nay publish len topic:
+## 7. Lỗi thường gặp và cách xử lý nhanh
 
-- `/wheel_velocity_controller/commands`
+- Lỗi không tìm thấy package:
+  - Chưa source workspace. Chạy lại: source ~/ros2_ws/install/setup.bash
+- Mở launch nhưng không thấy robot:
+  - Đóng hết terminal cũ, chạy lại từ Bước 1 theo đúng thứ tự.
+- Bấm phím không chạy:
+  - Nhớ click vào terminal đang chạy teleop để terminal nhận bàn phím.
 
-Huu ich khi ban muon dieu khien toc do tung banh qua ros2_control. Trong phien ban hien tai, mo phong da co plugin planar move nhan truc tiep `/cmd_vel`, nen van co the demo di chuyen ngay ma khong can buoc controller nay.
+## 8. Nội dung nộp
 
-## 9. Noi dung co the trinh bay trong 2-3 phut
+Trong package hiện có đủ các phần để thầy chạy kiểm tra:
 
-- Day la robot mecanum 4 banh tu model CAD (SolidWorks -> URDF).
-- Da tich hop mo phong Gazebo va quan sat RViz.
-- Da tich hop cam bien IMU + lidar trong mo phong.
-- Da co teleop ban phim de dieu khien cac huong va quay tai cho.
-- Da dat nen tang cho huong mo rong: ros2_control, dieu khien toc do tung banh, va world co vat can.
+- URDF và mesh robot
+- Launch file cho RViz và Gazebo
+- Teleop bàn phím
+- Cấu hình RViz
+- Cấu hình controller
 
-## 10. Tac gia
-
-- Package: `my_robot_description`
-- Maintainer trong package: `acer`
+Em xin cảm ơn thầy đã xem bài.
