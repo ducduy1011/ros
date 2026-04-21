@@ -1,0 +1,608 @@
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="Assem1_4">
+  <link
+    name="base_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.01" />
+      <inertia ixx="1e-5" ixy="0" ixz="0" iyy="1e-5" iyz="0" izz="1e-5" />
+    </inertial>
+  </link>
+  <joint
+    name="base_link_to_Than_link"
+    type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="Than_link" />
+  </joint>
+  <link
+    name="Than_link">
+    <inertial>
+      <origin
+        xyz="0.000442329603682311 1.38777878078145E-17 -0.0147661297993676"
+        rpy="0 0 0" />
+      <mass
+        value="0.748858120628714" />
+      <inertia
+        ixx="0.00132126261963691"
+        ixy="-1.22198382643935E-19"
+        ixz="4.48524168657791E-06"
+        iyy="0.00169700869488117"
+        iyz="-8.28738846579237E-21"
+        izz="0.00281570456824719" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://my_robot_description/meshes/Than_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://my_robot_description/meshes/Than_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="IMU_Link">
+    <inertial>
+      <origin
+        xyz="0 0 0.0014776968040973"
+        rpy="0 0 0" />
+      <mass
+        value="0.00352146018366025" />
+      <inertia
+        ixx="4.82099586051184E-07"
+        ixy="-2.18340146633628E-09"
+        ixz="-3.2082399090467E-25"
+        iyy="2.72144993264679E-07"
+        iyz="-1.83741251557529E-24"
+        izz="7.49018252295753E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://my_robot_description/meshes/IMU_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://my_robot_description/meshes/IMU_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="IMU_Joint"
+    type="fixed">
+    <origin
+      xyz="0.00022731090687704 0 -0.035"
+      rpy="0 0 0" />
+    <parent
+      link="Than_link" />
+    <child
+      link="IMU_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Lidar_Link">
+    <inertial>
+      <origin
+        xyz="0 0 1.0842021724855E-18"
+        rpy="0 0 0" />
+      <mass
+        value="0.00235619449019234" />
+      <inertia
+        ixx="1.91440802328128E-07"
+        ixy="5.65455496862421E-26"
+        ixz="-1.03397576569129E-25"
+        iyy="1.91440802328128E-07"
+        iyz="-3.30872245021211E-24"
+        izz="2.94524311274043E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://my_robot_description/meshes/Lidar_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://my_robot_description/meshes/Lidar_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Lidar_Joint"
+    type="continuous">
+    <origin
+      xyz="0.060227310906877 0 0.01"
+      rpy="0 0 0" />
+    <parent
+      link="Than_link" />
+    <child
+      link="Lidar_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="Link1_Link">
+    <inertial>
+      <origin
+        xyz="0.0191237781200909 4.85722573273506E-17 -0.0516247609751773"
+        rpy="0 0 0" />
+      <mass
+        value="0.150732784093452" />
+      <inertia
+        ixx="0.000237496144118951"
+        ixy="6.94567016748526E-20"
+        ixz="-0.000123906577981915"
+        iyy="0.000516766309417115"
+        iyz="1.54886727854317E-19"
+        izz="0.000299521724231038" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://my_robot_description/meshes/Link1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://my_robot_description/meshes/Link1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Link1_Joint"
+    type="revolute">
+    <origin
+      xyz="0.00022731 0 0.145"
+      rpy="0 0 0.086826" />
+    <parent
+      link="Than_link" />
+    <child
+      link="Link1_Link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="Link2_Link">
+    <inertial>
+      <origin
+        xyz="-1.38777878078145E-17 0 -0.097292921371127"
+        rpy="0 0 0" />
+      <mass
+        value="0.0655981488382263" />
+      <inertia
+        ixx="0.000160267296835104"
+        ixy="8.470329472543E-22"
+        ixz="7.84938705964634E-21"
+        iyy="0.000156289829749955"
+        iyz="2.5210056480331E-21"
+        izz="7.00039535868368E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://my_robot_description/meshes/Link2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://my_robot_description/meshes/Link2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Link2_Joint"
+    type="prismatic">
+    <origin
+      xyz="0.174 0 0.005"
+      rpy="0 0 0" />
+    <parent
+      link="Link1_Link" />
+    <child
+      link="Link2_Link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0.07"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="EF_Link">
+    <inertial>
+      <origin
+        xyz="0 -6.93889390390723E-18 0.080207078628873"
+        rpy="0 0 0" />
+      <mass
+        value="0.0655981488382263" />
+      <inertia
+        ixx="0.000160267296835104"
+        ixy="8.470329472543E-22"
+        ixz="7.9026032502626E-21"
+        iyy="0.000156289829749955"
+        iyz="3.12464102496124E-21"
+        izz="7.00039535868368E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://my_robot_description/meshes/EF_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://my_robot_description/meshes/EF_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="EF_Joint"
+    type="fixed">
+    <origin
+      xyz="0 0 -0.1775"
+      rpy="0 0 0" />
+    <parent
+      link="Link2_Link" />
+    <child
+      link="EF_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="TraiTren_Link">
+    <inertial>
+      <origin
+        xyz="-2.6021806424914E-08 9.87935387664063E-09 -0.0100370434626109"
+        rpy="0 0 0" />
+      <mass
+        value="0.0490880430650538" />
+      <inertia
+        ixx="5.47276922765843E-06"
+        ixy="4.61818969978452E-12"
+        ixz="-6.37660590093238E-12"
+        iyy="5.47277887760723E-06"
+        iyz="3.97927918394281E-12"
+        izz="7.31754014308783E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://my_robot_description/meshes/TraiTren_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://my_robot_description/meshes/TraiTren_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="TraiTren_Joint"
+    type="continuous">
+    <origin
+      xyz="0.070227 0.0976 -0.0375"
+      rpy="-1.5708 0 0" />
+    <parent
+      link="Than_link" />
+    <child
+      link="TraiTren_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="TraiDuoi_Link">
+    <inertial>
+      <origin
+        xyz="1.9326354877558E-08 -2.19742951543256E-08 -0.0100369699673338"
+        rpy="0 0 0" />
+      <mass
+        value="0.0490865409265873" />
+      <inertia
+        ixx="5.47242396499129E-06"
+        ixy="-7.48455946382451E-11"
+        ixz="-3.12442675120461E-13"
+        iyy="5.47248338650657E-06"
+        iyz="-5.85446156635274E-13"
+        izz="7.31687370146398E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://my_robot_description/meshes/TraiDuoi_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.796078431372549 0.823529411764706 0.937254901960784 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://my_robot_description/meshes/TraiDuoi_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="TraiDuoi_Joint"
+    type="continuous">
+    <origin
+      xyz="-0.059773 0.0976 -0.0375"
+      rpy="-1.5708 0 0" />
+    <parent
+      link="Than_link" />
+    <child
+      link="TraiDuoi_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="PhaiTren_Link">
+    <inertial>
+      <origin
+        xyz="-2.87334245147042E-08 1.31018131760419E-09 -0.0100369709873271"
+        rpy="0 0 0" />
+      <mass
+        value="0.0490865372025414" />
+      <inertia
+        ixx="5.47252984326676E-06"
+        ixy="-2.21995851687217E-11"
+        ixz="-1.19072644962591E-13"
+        iyy="5.47237638762637E-06"
+        iyz="4.93090495214558E-13"
+        izz="7.31687261518146E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://my_robot_description/meshes/PhaiTren_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.796078431372549 0.823529411764706 0.937254901960784 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://my_robot_description/meshes/PhaiTren_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="PhaiTren_Joint"
+    type="continuous">
+    <origin
+      xyz="0.070227 -0.0976 -0.0375"
+      rpy="1.5708 0 0" />
+    <parent
+      link="Than_link" />
+    <child
+      link="PhaiTren_Link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="PhaiDuoi_Link">
+    <inertial>
+      <origin
+        xyz="8.66815101641105E-09 -2.64499346938618E-08 -0.0100370434626114"
+        rpy="0 0 0" />
+      <mass
+        value="0.0490880430650613" />
+      <inertia
+        ixx="5.47277958164225E-06"
+        ixy="3.74674318234608E-12"
+        ixz="9.11927955786228E-13"
+        iyy="5.47276852361896E-06"
+        iyz="-7.46084097716305E-12"
+        izz="7.31754014308342E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://my_robot_description/meshes/PhaiDuoi_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://my_robot_description/meshes/PhaiDuoi_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="PhaiDuoi_Joint"
+    type="continuous">
+    <origin
+      xyz="-0.059772689093123 -0.0976 -0.0375"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="Than_link" />
+    <child
+      link="PhaiDuoi_Link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+
+  <gazebo reference="IMU_Link">
+    <sensor name="imu_sensor" type="imu">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <plugin name="imu_plugin" filename="libgazebo_ros_imu_sensor.so">
+        <ros>
+          <namespace>/</namespace>
+          <remapping>~/out:=/imu/data</remapping>
+        </ros>
+        <frame_name>IMU_Link</frame_name>
+        <initial_orientation_as_reference>false</initial_orientation_as_reference>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="Lidar_Link">
+    <material>Gazebo/Black</material>
+    <sensor name="lidar" type="ray">
+      <always_on>true</always_on>
+      <visualize>true</visualize> 
+      <update_rate>10</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>360</samples>
+            <resolution>1</resolution>
+            <min_angle>-3.14159</min_angle>
+            <max_angle>3.14159</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.15</min>
+          <max>12.0</max>
+          <resolution>0.015</resolution>
+        </range>
+      </ray>
+      <plugin name="scan" filename="libgazebo_ros_ray_sensor.so">
+        <ros>
+          <remapping>~/out:=scan</remapping>
+        </ros>
+        <output_type>sensor_msgs/LaserScan</output_type>
+        <frame_name>Lidar_Link</frame_name>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="mecanum_planar_move" filename="libgazebo_ros_planar_move.so">
+      <ros>
+        <namespace>/</namespace>
+      </ros>
+      <command_topic>cmd_vel</command_topic>
+      <odometry_topic>odom</odometry_topic>
+      <odometry_frame>odom</odometry_frame>
+      <robot_base_frame>base_link</robot_base_frame>
+      <publish_odom>true</publish_odom>
+      <publish_odom_tf>true</publish_odom_tf>
+    </plugin>
+  </gazebo>
+</robot>
